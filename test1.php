@@ -8,6 +8,24 @@
 </head>
 
 <body>
+    <table border="1" align="center">
+        <tr>
+            <?php
+            for ($i = 1; $i <= 10; $i++) {
+                echo "<th> Chương $i</th>";
+            }
+            ?>
+        </tr>
+        <?php
+        for ($i = 1; $i <= 10; $i++) {
+            echo "<tr>";
+            for ($j = 1; $j <= 10; $j++) {
+                echo "<td>$i x $j = " . $i * $j . "</td>";
+            }
+            echo "</tr>";
+        }
+        ?>
+    </table>
     <?php
     //Cau 1
     echo "<br>Cau 1: ";
@@ -17,16 +35,6 @@
     for ($i = 1; $i <= $N; $i++) {
         if ($i % 2 == 0) {
             echo "$i ";
-        }
-    }
-    //Cau 2
-    //Bang cuu chuong
-    echo "<br>Cau 2: ";
-    for ($i = 1; $i <= 10; $i++) {
-        echo "<br>Bang cuu chuong $i";
-        for ($j = 1; $j <= 10; $j++) {
-            $ketqua = $i * $j;
-            echo "<br>$i x $j = $ketqua";
         }
     }
 
@@ -41,7 +49,7 @@
                 $dem++;
             }
         }
-        return $dem==2;
+        return $dem == 2;
     }
     if ($M > 0) {
         echo "<br> $M la so duong";
@@ -52,7 +60,7 @@
             }
         }
         //Tim so nguyen to
-        if(kiemTraSNT($M)) {
+        if (kiemTraSNT($M)) {
             echo "<br>$M la so nguyen to";
         } else {
             echo "<br>$M khong phai la so nguyen to";
@@ -60,8 +68,8 @@
         //Tong cac so nguyen to < N
         $tong = 0;
         for ($i = 2; $i < $M; $i++) {
-            if(kiemTraSNT($i)) {
-                $tong+=$i;
+            if (kiemTraSNT($i)) {
+                $tong += $i;
             }
         }
         echo "<br>Tong cac so nguyen to < $M la: $tong";
