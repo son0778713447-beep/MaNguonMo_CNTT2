@@ -4,9 +4,6 @@
     <meta charset="UTF-8">
     <title>Kết quả phép tính - Microsoft Internet Explorer</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
         .container {
             width: 450px;
             margin: 30px auto;
@@ -55,7 +52,7 @@
 <body>
 
 <?php
-// Định nghĩa các hàm thực hiện phép tính theo yêu cầu hướng dẫn
+// Định nghĩa các hàm
 function cong($a, $b) {
     return $a + $b;
 }
@@ -75,7 +72,7 @@ function chia($a, $b) {
     return $a / $b;
 }
 
-// Lấy dữ liệu từ form trang pheptinh.php gửi sang
+// Lấy dữ liệu từ form trang bai6.php gửi sang
 $phep_tinh = isset($_POST['phep_tinh']) ? $_POST['phep_tinh'] : "";
 $so1 = isset($_POST['so1']) ? $_POST['so1'] : 0;
 $so2 = isset($_POST['so2']) ? $_POST['so2'] : 0;

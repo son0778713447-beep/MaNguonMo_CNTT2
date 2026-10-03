@@ -1,116 +1,85 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thanh toán tiền điện</title>
-    <style>
-        .form-container {
-            background-color: #FFF2CC; /* Màu nền */
-            width: 450px;
-            margin: 50px auto;
-            border: 1px solid #ccc;
-        }
-        h2 {
-            text-align: center;
-            color: #ef1717; /* Màu chữ */
-            background-color: #F8CBAD; /* Nền tiêu đề */
-            margin: 0;
-            padding: 10px;
-            text-transform: uppercase;
-        }
-        table {
-            width: 100%;
-            padding: 15px;
-        }
-        td {
-            padding: 6px 0;
-        }
-        .input-box {
-            width: 90%;
-        }
-        /* Ô Số tiền thanh toán không cho chỉnh sửa */
-        .readonly-input {
-            pointer-events: none; /* Khóa click chuột */
-        }
-        .btn-tinh {
-            text-align: center;
-            padding-top: 10px;
-        }
-    </style>
 </head>
 <body>
 
-<?php
-// 1. Khởi tạo các biến
+    <?php
 $ten_chu_ho = "";
 $chi_so_cu = "";
 $chi_so_moi = "";
-// Gán giá trị mặc định của Đơn giá là 20000
-$don_gia = "20000"; 
-$so_tien_thanh_toan = "";
+$don_gia = 20000;
+$so_tien = "";
 
-// 2. Kiểm tra nếu người dùng bấm nút Tính (phương thức POST)
+// Kiểm tra khi người dùng bấm nút Tính (gửi form qua POST)
 if (isset($_POST['tinh'])) {
     $ten_chu_ho = $_POST['ten_chu_ho'];
     $chi_so_cu = $_POST['chi_so_cu'];
     $chi_so_moi = $_POST['chi_so_moi'];
     $don_gia = $_POST['don_gia'];
 
-    // Kiểm tra dữ liệu nhập vào phải là số
-    if (is_numeric($chi_so_cu) && is_numeric($chi_so_moi) && is_numeric($don_gia)) {
-        if ($chi_so_moi >= $chi_so_cu) {
-            // Thực hiện tính toán: Số tiền = (Chỉ số mới - Chỉ số cũ) * Đơn giá
-            $so_tien_thanh_toan = ($chi_so_moi - $chi_so_cu) * $don_gia;
-        } else {
-            $so_tien_thanh_toan = "Lỗi: Chỉ số mới < Chỉ số cũ";
-        }
-    } else {
-        $so_tien_thanh_toan = "Dữ liệu nhập không hợp lệ!";
-    }
+    if(is_numeric($chi_so_moi) && is_numeric($chi_so_cu) && is_numeric($don_gia) && $chi_so_moi > $chi_so_cu && $chi_so_cu >0 && $chi_so_moi >0 && $ten_chu_ho != NULL) {
+    //Số tiền thanh toán = (Chỉ số mới - Chỉ số cũ) * Đơn giá
+
+    $so_tien = ($chi_so_moi - $chi_so_cu) * $don_gia;
+     }else {
+        $so_tien = "Vui lòng nhập số hợp lệ!";
+     }
 }
 ?>
-
-<!-- 3. Thiết kế Form -->
-<div class="form-container">
-    <h2>THANH TOÁN TIỀN ĐIỆN</h2>
-    
-    <!-- Thiết lập phương thức POST và action là tên của trang (ở đây để rỗng để tự xử lý trên cùng trang) -->
-    <form name="formTienDien" action="" method="POST">
-        <table>
-            <tr>
-                <td style="width: 35%;">Tên chủ hộ:</td>
-                <td><input type="text" name="ten_chu_ho" class="input-box" value="<?php echo $ten_chu_ho; ?>"></td>
-                <td style="width: 15%;"></td>
-            </tr>
-            <tr>
-                <td>Chỉ số cũ:</td>
-                <td><input type="text" name="chi_so_cu" class="input-box" value="<?php echo $chi_so_cu; ?>" required></td>
-                <td>(Kw)</td>
-            </tr>
-            <tr>
-                <td>Chỉ số mới:</td>
-                <td><input type="text" name="chi_so_moi" class="input-box" value="<?php echo $chi_so_moi; ?>" required></td>
-                <td>(Kw)</td>
-            </tr>
-            <tr>
-                <td>Đơn giá:</td>
-                <td><input type="text" name="don_gia" class="input-box" value="<?php echo $don_gia; ?>" required></td>
-                <td>(VNĐ)</td>
-            </tr>
-            <tr>
-                <td>Số tiền thanh toán:</td>
-                <!-- Textfield Số tiền thanh toán sử dụng thuộc tính readonly để không cho phép nhập liệu và chỉnh sửa -->
-                <td><input type="text" name="so_tien_thanh_toan" class="input-box readonly-input" value="<?php echo $so_tien_thanh_toan; ?>" readonly></td>
-                <td>(VNĐ)</td>
-            </tr>
-            <tr>
-                <td colspan="3" class="btn-tinh">
-                    <input type="submit" name="tinh" value="Tính">
-                </td>
-            </tr>
-        </table>
-    </form>
-</div>
-
+<form name="form_tiendien" action="" method="POST">
+    <table align="center" bgcolor="#FFF8DC" border="0" cellpadding="5">
+        <tr bgcolor="#FFE4B5">
+            <td colspan="3" align="center">
+                <font color="#8B4513" size="4"><b>THANH TOÁN TIỀN ĐIỆN</b></font>
+            </td>
+        </tr>
+        <tr>
+            <td>Tên chủ hộ:</td>
+            <td>
+                <input type="text" name="ten_chu_ho" value="<?php echo $ten_chu_ho; ?>">
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Chỉ số cũ:</td>
+            <td>
+                <input type="text" name="chi_so_cu" value="<?php echo $chi_so_cu; ?>">
+            </td>
+            <td>(Kw)</td>
+        </tr>
+        <tr>
+            <td>Chỉ số mới:</td>
+            <td>
+                <input type="text" name="chi_so_moi" value="<?php echo $chi_so_moi; ?>">
+            </td>
+            <td>(Kw)</td>
+        </tr>
+        <tr>
+            <td>Đơn giá:</td>
+            <td>
+                <!-- Đơn giá có giá trị mặc định là 2000 hoặc 20000 theo đề bài -->
+                <input type="text" name="don_gia" value="<?php echo $don_gia; ?>">
+            </td>
+            <td>(VNĐ)</td>
+        </tr>
+        <tr>
+            <td>Số tiền thanh toán:</td>
+            <td>
+                <!-- Khóa không cho sửa bằng readonly và đổi màu nền thành màu hồng -->
+                <input type="text" name="so_tien" value="<?php echo $so_tien; ?>" readonly style="background-color: #FFC0CB;">
+            </td>
+            <td>(VNĐ)</td>
+        </tr>
+        <tr>
+            <td colspan="3" align="center">
+                <input type="submit" name="tinh" value="Tính">
+            </td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Kết quả thi đại học</title>
     <style>
+
         .form-container {
-            background-color: #FCE4D6; /* Màu nền */
+            background-color: #FCE4D6; 
             width: 420px;
             margin: 50px auto;
             border: 1px solid #E6B0AA;
@@ -13,7 +14,7 @@
         h2 {
             text-align: center;
             color: #FFFFFF;
-            background-color: #f33b79ff; /* Màu hồng đậm cho thanh tiêu đề */
+            background-color: #E91E63; 
             margin: 0;
             padding: 10px;
             text-transform: uppercase;
@@ -29,8 +30,8 @@
         .input-box {
             width: 90%;
         }
-        /* Style cho các ô không cho phép nhập */
         .readonly-input {
+            background-color: #FFF2CC; 
             pointer-events: none;
         }
         .btn-submit {
@@ -50,19 +51,19 @@ $diem_chuan = "";
 $tong_diem = "";
 $ket_qua = "";
 
-// 2. Xử lý khi nhấn nút "Xem kết quả"
+// 2. Xử lý khi nhấn nút "Xem kết quả" (phương thức POST)
 if (isset($_POST['xem_ket_qua'])) {
     $toan = $_POST['toan'];
     $ly = $_POST['ly'];
     $hoa = $_POST['hoa'];
     $diem_chuan = $_POST['diem_chuan'];
 
-    // Kiểm tra dữ liệu nhập vào có phải là số hay ko
-    if (is_numeric($toan) && is_numeric($ly) && is_numeric($hoa) && is_numeric($diem_chuan) && ($toan >= 0&& $hoa >= 0&&$ly>=0) && ($toan <=10 && $hoa <=10 && $ly<=10) ) {
+    // Kiểm tra dữ liệu nhập vào có phải là số hay không
+    if (is_numeric($toan) && is_numeric($ly) && is_numeric($hoa) && is_numeric($diem_chuan) && ($toan >=0  && $ly >= 0 && $hoa >=0) && $diem_chuan >=0 && ($toan <=10  && $ly <= 10 && $hoa <=10)) {
         // Công thức tính Tổng điểm = Toán + Lý + Hóa
         $tong_diem = $toan + $ly + $hoa;
 
-        // Đậu khi ko có môn nào 0 điểm VÀ tổng điểm >= điểm chuẩn. Ngược lại: Rớt.
+        // Đậu khi KHÔNG có môn nào 0 điểm VÀ tổng điểm >= điểm chuẩn. Ngược lại: Rớt.
         if ($toan > 0 && $ly > 0 && $hoa > 0 && $tong_diem >= $diem_chuan) {
             $ket_qua = "Đậu";
         } else {
@@ -77,7 +78,7 @@ if (isset($_POST['xem_ket_qua'])) {
 <!-- 3. Thiết kế Form -->
 <div class="form-container">
     <h2>KẾT QUẢ THI ĐẠI HỌC</h2>
-    
+
     <!-- Form tên formKetQuaThi, method POST, action rỗng để tự xử lý trên trang -->
     <form name="formKetQuaThi" action="" method="POST">
         <table>

@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Tính tiền Karaoke</title>
     <style>
+
         .form-container {
-            background-color: #05b4b4ff; /* Màu nền */
+            background-color: #008080;
             color: #FFFFFF;
             width: 420px;
             margin: 50px auto;
@@ -32,8 +33,9 @@
             width: 85%;
             padding: 3px;
         }
-        /* Style cho ô Tiền thanh toán ko cho chỉnh sửa */
+
         .readonly-input {
+            background-color: #FFFF99;
             color: #000000;
             pointer-events: none;
         }
@@ -50,12 +52,10 @@
 <body>
 
 <?php
-// 1. Khởi tạo các biến
 $gio_bat_dau = "";
 $gio_ket_thuc = "";
 $tien_thanh_toan = "";
 
-// 2. Xử lý khi nhấn nút "Tính tiền"
 if (isset($_POST['tinh'])) {
     $gio_bat_dau = $_POST['gio_bat_dau'];
     $gio_ket_thuc = $_POST['gio_ket_thuc'];
@@ -70,7 +70,7 @@ if (isset($_POST['tinh'])) {
             } else {
                 // Tính số giờ trong khoảng 10h -> 17h (đơn giá 20.000 VNĐ/giờ)
                 $gio_1 = max(0, min($gio_ket_thuc, 17) - max($gio_bat_dau, 10));
-                
+
                 // Tính số giờ trong khoảng 17h -> 24h (đơn giá 45.000 VNĐ/giờ)
                 $gio_2 = max(0, min($gio_ket_thuc, 24) - max($gio_bat_dau, 17));
 
@@ -90,7 +90,7 @@ if (isset($_POST['tinh'])) {
 <!-- 3. Thiết kế Form -->
 <div class="form-container">
     <h2>TÍNH TIỀN KARAOKE</h2>
-    
+
     <!-- Form phương thức POST, action rỗng để tự xử lý trên cùng trang -->
     <form name="formKaraoke" action="" method="POST">
         <table>

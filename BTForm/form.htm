@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Enter Your Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        fieldset {
+            width: 520px;
+            margin: 30px auto;
+            padding: 15px 20px;
+        }
+        legend {
+            font-weight: bold;
+        }
+        table {
+            width: 100%;
+        }
+        td {
+            padding: 5px 0;
+            vertical-align: top;
+        }
+        td:first-child {
+            width: 90px;
+            font-weight: normal;
+        }
+        input[type="text"] {
+            width: 250px;
+        }
+        select {
+            width: 120px;
+        }
+        textarea {
+            width: 380px;
+            height: 80px;
+        }
+        .btn-group {
+            text-align: center;
+            padding-top: 10px;
+        }
+        .btn-group input {
+            padding: 2px 12px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Form gửi dữ liệu sang config.php qua phương thức POST -->
+<form action="config.php" method="POST">
+    <fieldset>
+        <legend>Enter Your Information</legend>
+        <table>
+            <tr>
+                <td>Fullname</td>
+                <td><input type="text" name="fullname" value="Phạm Văn Dũ" required></td>
+            </tr>
+            <tr>
+                <td>Address</td>
+                <td><input type="text" name="address" value="56/1 BV"></td>
+            </tr>
+            <tr>
+                <td>Phone</td>
+                <td><input type="text" name="phone" value="0937344xxx"></td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>
+                    <input type="radio" name="gender" value="Nam" checked> Nam
+                    <input type="radio" name="gender" value="Nữ"> Nữ
+                </td>
+            </tr>
+            <tr>
+                <td>Country</td>
+                <td>
+                    <select name="country">
+                        <option value="Việt Nam" selected>Việt Nam</option>
+                        <option value="Mỹ">Mỹ</option>
+                        <option value="Nhật Bản">Nhật Bản</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Study</td>
+                <td>
+                    <input type="checkbox" name="study[]" value="PHP & MySQL" checked> PHP & MySQL
+                    <input type="checkbox" name="study[]" value="ASP.NET" checked> ASP.NET
+                    <input type="checkbox" name="study[]" value="CCNA" checked> CCNA
+                    <input type="checkbox" name="study[]" value="Security+" checked> Security+
+                </td>
+            </tr>
+            <tr>
+                <td>Note</td>
+                <td>
+                    <textarea name="note">Dòng thứ 1&#10;Dòng thứ 2&#10;Dòng thứ 3</textarea>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="btn-group">
+                    <!-- Nút Gửi sẽ submit dữ liệu sang config.php -->
+                    <input type="submit" name="submit" value="Gửi">
+                    <!-- Nút Hủy (type="reset") sẽ tự động xoá hết thông tin vừa nhập -->
+                    <input type="reset" name="reset" value="Hủy">
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+</form>
+
+</body>
+</html>

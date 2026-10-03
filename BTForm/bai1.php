@@ -13,7 +13,7 @@
         }
         h2 {
             text-align: center;
-            color: #ff0000ff; /* Màu chữ tiêu đề */
+            color: #dc0b0b; /* Màu chữ tiêu đề */
             background-color: #FCE4D6; /* Nền tiêu đề */
             margin: 0;
             padding: 10px;
@@ -29,7 +29,8 @@
         }
         /* Style cho ô Diện tích không cho phép chỉnh sửa */
         .readonly-input {
-            pointer-events: none; /* Ko cho click vào */
+            background-color: #ffdd78ff;
+            pointer-events: none; /* ko cho click vào */
         }
         .btn-tinh {
             text-align: center;
@@ -38,7 +39,7 @@
     </style>
 </head>
 <body>
-    <?php
+<?php
 // 1. Khởi tạo các biến
 $chieudai = "";
 $chieurong = "";
@@ -51,7 +52,7 @@ if (isset($_POST['tinh'])) {
     $chieurong = $_POST['chieurong'];
 
     // Kiểm tra dữ liệu nhập vào có phải là số không
-    if (is_numeric($chieudai) && is_numeric($chieurong) && $chieudai>0 && $chieurong>0) {
+    if (is_numeric($chieudai) && is_numeric($chieurong) && $chieudai > 0 && $chieurong > 0 && $chieudai > $chieurong) {
         // Thực hiện tính toán: Diện tích = Chiều dài * Chiều rộng
         $dientich = $chieudai * $chieurong;
     } else {

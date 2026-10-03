@@ -5,13 +5,14 @@
     <title>Tính diện tích và chu vi hình tròn</title>
     <style>
         .form-container {
-            background-color: #e7d7a6ff; /* Màu nền form */
+            background-color: #f1e7c6ff; /* Màu nền form */
             width: 400px;
             margin: 50px auto;
             border: 1px solid #ccc;
             font-family: Arial, sans-serif;
         }
         h2 {
+            background-color: #e3fc76ff;
             text-align: center;
             color: #D2691E; /* Màu chữ*/
             margin: 0;
@@ -29,6 +30,7 @@
         }
         /* Style cho ô không cho phép chỉnh sửa */
         .readonly-input {
+            background-color: #ffe4e1;
             pointer-events: none; /* Ko cho click vào */
         }
         .btn-tinh {
